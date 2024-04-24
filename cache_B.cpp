@@ -67,6 +67,7 @@ void transpose_submit(int M, int N, int A[N][M], int B[M][N])
                 }
             }
         }
+        return;
         
         
 
@@ -223,8 +224,8 @@ void transpose_submit(int M, int N, int A[N][M], int B[M][N])
         int strides=16;
         for(int i=0;i<67;i=i+strides){
             for(int j=0;j<61;j=j+strides){
-                for(int k=i;k<67&&k<i+strides;k++){
-                    for(int x=j;x<61&&x<j+strides;x++){
+                for(int k=i;(k<67)&&(k<i+strides);k++){
+                    for(int x=j;(x<61)&&x<(j+strides);x++){
                         B[x][k]=A[k][x];
                     }
                     
@@ -232,6 +233,7 @@ void transpose_submit(int M, int N, int A[N][M], int B[M][N])
             }
         }
     }
+    return;
     
 
 }
